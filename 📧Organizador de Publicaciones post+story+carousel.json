@@ -1,0 +1,2545 @@
+{
+  "name": "📧Organizador de Publicaciones post+story+carousel",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 🟣 PHASE 1 — TRIGGER\nSchedule every 3 days at 12PM (Jimmy Values)\nor trigger manually for testing. wE establish a cronogrmama to ppublish content\n",
+        "height": 104,
+        "width": 736,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        7408,
+        1408
+      ],
+      "id": "905604e4-df70-4153-ab04-513b781f9f89",
+      "name": "Note Phase "
+    },
+    {
+      "parameters": {
+        "content": "## 🟠 PHASE 3 — CANVA TEMPLATE\nUses Canva API to populate your branded\ntemplate with Title + Description.\nReturns a preview image URL\n\nNEW VERSION MARCH 14 ADDING CAROUSEL",
+        "height": 184,
+        "width": 1008,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        8784,
+        1280
+      ],
+      "id": "a37105e4-21e0-462c-b8a4-f51639602e81",
+      "name": "Note Phase 5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b79af122-fba3-48cf-9020-58c994f9df0e",
+              "name": "design_id",
+              "value": "={{ $('Pick By Date').item.json.Design_ID }}",
+              "type": "string"
+            },
+            {
+              "id": "50953655-0281-4452-bb33-73ca639a6067",
+              "name": "image_url",
+              "value": "={{ $('🔗 Get Export URL POST').item.json.job.urls[0] }}\n",
+              "type": "string"
+            },
+            {
+              "id": "073c0c69-65e1-4f9a-a47a-6642a61e30d4",
+              "name": "description",
+              "value": "={{ $('Pick By Date').item.json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "ada78265-0cee-4c91-b93d-d96b25132bf7",
+              "name": "hashtags",
+              "value": "={{ $('Pick By Date').item.json.Hashtags }}",
+              "type": "string"
+            },
+            {
+              "id": "10b6ef0a-b917-424b-8c2d-0bd62ad47c6d",
+              "name": "format",
+              "value": "={{ $('Pick By Date').item.json.Format }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        10336,
+        1504
+      ],
+      "id": "c1623845-fa2c-4a30-8868-f2009800c84e",
+      "name": "Set Post Data1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "25ca78a3-4f38-48dd-b689-58dd2f1af9b2",
+              "name": "design_id",
+              "value": "={{ $('Pick By Date').item.json.Design_ID }}",
+              "type": "string"
+            },
+            {
+              "id": "06dcdc85-8507-4ffc-8e2f-1a2ec1a81041",
+              "name": "=Format",
+              "value": "={{ $('Detect Format').item.json.format }}",
+              "type": "string"
+            },
+            {
+              "id": "a688e124-8191-4fb9-8419-44a7e8c403a4",
+              "name": "=image_url",
+              "value": "={{ $('🔗 Get Export URL HISTORIA1').item.json.job.urls[0] }}\n",
+              "type": "string"
+            },
+            {
+              "id": "8cb0ecdd-ba88-474e-a96d-f3fe5a771f77",
+              "name": "description",
+              "value": "={{ $('Extract Design_ID1').item.json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "b725c343-c971-4b81-90f5-a13e2bdecb33",
+              "name": "Hashtags",
+              "value": "={{ $('Extract Design_ID1').item.json.Hashtags }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        10352,
+        1760
+      ],
+      "id": "bb0d7d24-6263-49d8-a2f0-d94b7982b067",
+      "name": "Set Post Data HISTORIA1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "post",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "912387cd-9362-4299-a8d3-aa24453b0a9d"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "cae00f07-642c-40cd-bf9a-bc72b04c44c9",
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "=stories",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "7ba0e64c-3d4d-4c35-bda5-74834047edf9",
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "carousel",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": "={{ false }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        8560,
+        1600
+      ],
+      "id": "7c8842c9-d84c-450b-b1c5-9c2128ea6b60",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {},
+      "name": "⏳ Wait POST1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        9792,
+        1504
+      ],
+      "webhookId": "3c13c9d1-0313-41c8-9ea1-a22baaea9864",
+      "id": "0dc81b21-cfd8-4aa1-a438-2ac1b9d3f597"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.canva.com/rest/v1/exports",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": { \"type\": \"png\" }\n}\n",
+        "options": {}
+      },
+      "name": "📤 Export POST1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        9552,
+        1504
+      ],
+      "id": "4267de46-ff98-4aa1-99b0-d4359b9f4f5d",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "name": "⏳ Wait HISTORIA1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        9792,
+        1760
+      ],
+      "webhookId": "dec29e0a-fcca-45a0-a2ae-840295bb18cd",
+      "id": "0e996919-9883-4dc4-b3d5-2a28c1d60548"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.canva.com/rest/v1/exports",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": { \"type\": \"png\" }\n}\n",
+        "options": {}
+      },
+      "name": "📤 Export HISTORIA1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        9552,
+        1760
+      ],
+      "id": "c719c9d2-2991-49e0-8907-a556c7d2f405",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/exports/{{ $('📤 Export HISTORIA1').item.json.job.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "options": {}
+      },
+      "name": "🔗 Get Export URL HISTORIA1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        10048,
+        1760
+      ],
+      "id": "9e7ff7af-9ec1-45c0-8416-7c61d8a2c9ab",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.canva.com/rest/v1/exports",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": { \"type\": \"png\" }\n}\n",
+        "options": {}
+      },
+      "name": "📤 Export Carousel1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        9536,
+        2032
+      ],
+      "id": "0ae13ddc-23a1-4f60-bc68-3e64866832ac",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "name": "⏳ Wait Carousel1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        9808,
+        2032
+      ],
+      "webhookId": "9b553797-4c1a-4ac9-ba93-6193ea0b65d8",
+      "id": "a9bc126e-ea84-4b8f-b4a4-6de3c01c743a"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/exports/{{ $('📤 Export Carousel1').item.json.job.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "options": {}
+      },
+      "name": "🔗 Get Export URL Carousel1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        10064,
+        2032
+      ],
+      "id": "0d187824-be88-40dd-b09c-37c93f893048",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "25ca78a3-4f38-48dd-b689-58dd2f1af9b2",
+              "name": "design_id",
+              "value": "={{ $('Pick By Date').item.json.design_id }}",
+              "type": "string"
+            },
+            {
+              "id": "06dcdc85-8507-4ffc-8e2f-1a2ec1a81041",
+              "name": "format",
+              "value": "={{ $('Pick By Date').item.json.format }}",
+              "type": "string"
+            },
+            {
+              "id": "a688e124-8191-4fb9-8419-44a7e8c403a4",
+              "name": "=image_url",
+              "value": "={{ $('🔗 Get Export URL Carousel1').item.json.job.urls[0] }}\n",
+              "type": "string"
+            },
+            {
+              "id": "4711d138-120e-48ec-8dc7-fa5f6d9ab48b",
+              "name": "image_url_1",
+              "value": "={{ $json.job.urls[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "5f3f16b9-a759-4ffb-9df1-cdbd88dfa191",
+              "name": "image_url_2",
+              "value": "={{ $json.job.urls[2] }}",
+              "type": "string"
+            },
+            {
+              "id": "7e7feb1d-cd6f-4d27-a314-7dd95514a2b3",
+              "name": "image_url_3",
+              "value": "={{ $json.job.urls[3] }}",
+              "type": "string"
+            },
+            {
+              "id": "bd6d8b16-6e0b-4895-ab22-74c3e39e54cd",
+              "name": "image_url_4",
+              "value": "={{ $json.job.urls[4] }}",
+              "type": "string"
+            },
+            {
+              "id": "7eb21260-0b4d-4a9e-a9d4-76771f7977cb",
+              "name": "description",
+              "value": "={{ $('Pick By Date').item.json.description}}",
+              "type": "string"
+            },
+            {
+              "id": "548a06e9-e54a-47dc-8197-a5b2a2f903bf",
+              "name": "hashtags",
+              "value": "={{ $('Pick By Date').item.json.hashtags }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        10352,
+        2032
+      ],
+      "id": "880eef74-8ff3-4e33-9a6c-102ce6e049c3",
+      "name": "Set Post Data Carousel1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n \"facebook\": \"69aa5be9dc8cab9432bc4f9b\",\n \"facebook_page_id\": \"61585073977460\",\n \"instagram\": \"69aa5b41dc8cab9432bc4ec2\",\n \"linkedin\": \"697ab30077637c5c857cb6a1\"\n}\n\n\n",
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        10880,
+        1696
+      ],
+      "id": "fbdcfdf5-e9cd-44f1-a8ad-7880b1abb7e1",
+      "name": "ID Get Late Accounts"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://getlate.dev/api/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk_d1f53761563f3327c0981b19ea499e6426c4ada2865f28f41f4321751654fef1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"image\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"story\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        11616,
+        1936
+      ],
+      "id": "3e6fd723-4e39-4f56-8c47-06132e0a1ce9",
+      "name": "📸 Stories to Instagram (Getlate)1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "=17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Status": "published",
+            "Design_ID": "={{ $('Pick By Date').item.json.Design_ID }}"
+          },
+          "matchingColumns": [
+            "Design_ID"
+          ],
+          "schema": [
+            {
+              "id": "template_n",
+              "displayName": "template_n",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Design_ID",
+              "displayName": "Design_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Format",
+              "displayName": "Format",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Day-week",
+              "displayName": "Day-week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hashtags",
+              "displayName": "Hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url",
+              "displayName": "image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_2",
+              "displayName": "image_url_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_3",
+              "displayName": "image_url_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_4",
+              "displayName": "image_url_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        12304,
+        1936
+      ],
+      "id": "6d2cd54e-8bae-4be8-94d3-f8b610402426",
+      "name": "✅Mark as Published1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "list",
+          "cachedResultName": "Cronograma de Publicaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Format": "={{ $json.Format }}",
+            "Status": "pending",
+            "Design_ID": "={{ $json.design_id }}",
+            "image_url": "={{ $json.image_url }}"
+          },
+          "matchingColumns": [
+            "Design_ID"
+          ],
+          "schema": [
+            {
+              "id": "template_n",
+              "displayName": "template_n",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Design_ID",
+              "displayName": "Design_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Format",
+              "displayName": "Format",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day-week",
+              "displayName": "Day-week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hashtags",
+              "displayName": "Hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_url",
+              "displayName": "image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_2",
+              "displayName": "image_url_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_url_3",
+              "displayName": "image_url_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_url_4",
+              "displayName": "image_url_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        10560,
+        1760
+      ],
+      "id": "afd004df-f9ec-40ab-8669-5881597403c1",
+      "name": "image url stories1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "list",
+          "cachedResultName": "Cronograma de Publicaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Status": "pending",
+            "Design_ID": "={{ $json.design_id }}",
+            "row_number": 0,
+            "Format": "={{ $json.Format }}",
+            "image_url": "={{ $json.image_url }}"
+          },
+          "matchingColumns": [
+            "Design_ID"
+          ],
+          "schema": [
+            {
+              "id": "template_n",
+              "displayName": "template_n",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Design_ID",
+              "displayName": "Design_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Format",
+              "displayName": "Format",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day-week",
+              "displayName": "Day-week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hashtags",
+              "displayName": "Hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_url",
+              "displayName": "image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_2",
+              "displayName": "image_url_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_3",
+              "displayName": "image_url_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_4",
+              "displayName": "image_url_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        10576,
+        2032
+      ],
+      "id": "9a0840a7-b134-4e65-9ac2-96043af73802",
+      "name": "image_url carousel1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "list",
+          "cachedResultName": "Cronograma de Publicaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Status": "pending",
+            "Design_ID": "={{ $json.design_id }}",
+            "Format": "={{ $json.format }}",
+            "image_url": "={{ $json.image_url }}"
+          },
+          "matchingColumns": [
+            "Design_ID"
+          ],
+          "schema": [
+            {
+              "id": "template_n",
+              "displayName": "template_n",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Design_ID",
+              "displayName": "Design_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Format",
+              "displayName": "Format",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Day-week",
+              "displayName": "Day-week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hashtags",
+              "displayName": "Hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_url",
+              "displayName": "image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "image_url_2",
+              "displayName": "image_url_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_url_3",
+              "displayName": "image_url_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_url_4",
+              "displayName": "image_url_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        10544,
+        1504
+      ],
+      "id": "3289e3ff-68a8-4a01-978b-2106a39cd06d",
+      "name": "Post image_url1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\nconst design = item.design;\nconst width = design.thumbnail.width;\nconst height = design.thumbnail.height;\nconst ratio = width / height;\n\n// Post (400x500)   → ratio ~0.80\n// Stories (335x596) → ratio ~0.56\n// Carousel (1080x1440) → ratio ~0.75 — entre post y square\n// Umbral: < 0.62 = stories | 0.62-0.78 = carousel | > 0.78 = post\n\nlet format;\nif (ratio < 0.62) {\n  format = 'stories';\n} else if (ratio <= 0.78) {\n  format = 'carousel';\n} else {\n  format = 'post';\n}\n\nreturn [{ json: {\n  Design_ID: design.id,\n  format: format,\n  ratio: ratio\n}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8320,
+        1600
+      ],
+      "id": "de90727b-e52b-47f5-b986-fc00dbbf9e91",
+      "name": "Detect Format"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://getlate.dev/api/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk_d1f53761563f3327c0981b19ea499e6426c4ada2865f28f41f4321751654fef1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}\\n\\n{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"image\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"story\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        11616,
+        1680
+      ],
+      "id": "e47bf6dd-8608-4596-88fd-67f2ec0346e7",
+      "name": "📸 Post to Instagram (Getlate)"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "=17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Status": "published",
+            "Design_ID": "={{ $('Pick By Date').item.json.Design_ID }}"
+          },
+          "matchingColumns": [
+            "Design_ID"
+          ],
+          "schema": [
+            {
+              "id": "template_n",
+              "displayName": "template_n",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Design_ID",
+              "displayName": "Design_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Format",
+              "displayName": "Format",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Day-week",
+              "displayName": "Day-week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hashtags",
+              "displayName": "Hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Image_url",
+              "displayName": "Image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        12240,
+        1552
+      ],
+      "id": "8d5b2783-0020-491c-8d83-e94e2a7ca7e5",
+      "name": "✅Mark as Published",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "=17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Status": "published",
+            "Design_ID": "={{ $('Pick By Date').item.json.Design_ID }}"
+          },
+          "matchingColumns": [
+            "Design_ID"
+          ],
+          "schema": [
+            {
+              "id": "template_n",
+              "displayName": "template_n",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Design_ID",
+              "displayName": "Design_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Format",
+              "displayName": "Format",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Day-week",
+              "displayName": "Day-week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Hashtags",
+              "displayName": "Hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Image_url",
+              "displayName": "Image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        12304,
+        2128
+      ],
+      "id": "3ba47ea8-cf34-4665-ac77-fe2176dd1118",
+      "name": "✅Mark as Published2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "otunservices@gmail.com, phoenixtec0@gmail.com",
+        "subject": "✅ STORIES PUBLICADO — Genius Astra | {{ $json.design_ID }}",
+        "message": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background-color: #f9f9f9; border-radius: 12px;\">\n  \n  <!-- HEADER -->\n  <div style=\"background-color: #0d0d0d; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;\">\n    <h1 style=\"color: #ffffff; margin: 0; font-size: 20px;\">🤖 Genius Astra Automation Engine</h1>\n    <p style=\"color: #aaaaaa; margin: 6px 0 0; font-size: 13px;\">Sistema de Publicación Instagram</p>\n  </div>\n\n  <!-- STATUS BADGE -->\n  <div style=\"background-color: #28a745; padding: 14px 20px; text-align: center;\">\n    <h2 style=\"color: #ffffff; margin: 0; font-size: 18px;\">✅ Publicación Exitosa</h2>\n  </div>\n\n  <!-- BODY -->\n  <div style=\"background-color: #ffffff; padding: 24px; border-radius: 0 0 10px 10px;\">\n    \n    <!-- META INFO -->\n    <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 20px;\">\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px; width: 40%;\">📌 Template N°</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $json.template_n }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">🆔 Design ID</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px; word-break: break-all;\">{{ $json.design_ID }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">📐 Formato</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px; text-transform: capitalize;\">{{ $json.format }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">📅 Día</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('EEEE dd MMMM yyyy') }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">🕐 Hora</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('hh:mm a') }} EST</td>\n      </tr>\n    </table>\n\n    <!-- CAPTION PREVIEW -->\n    <div style=\"background-color: #f0f4ff; border-left: 4px solid #4a6cf7; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px;\">\n      <p style=\"margin: 0 0 6px; color: #4a6cf7; font-size: 12px; font-weight: bold;\">📝 CAPTION PUBLICADO</p>\n      <p style=\"margin: 0; color: #333; font-size: 13px; line-height: 1.6;\">{{ $json.description }}</p>\n    </div>\n\n    <!-- IMAGE PREVIEW -->\n    <p style=\"color: #666; font-size: 12px; margin: 0 0 8px; font-weight: bold;\">🖼️ IMAGEN EXPORTADA</p>\n    <img src=\"{{ $json.image_url }}\" \n         width=\"100%\" \n         style=\"border-radius: 10px; border: 1px solid #e0e0e0; display: block;\"/>\n\n    <!-- FOOTER -->\n    <div style=\"margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; text-align: center;\">\n      <p style=\"color: #999; font-size: 12px; margin: 0;\">Publicado automáticamente por</p>\n      <p style=\"color: #0d0d0d; font-size: 14px; font-weight: bold; margin: 4px 0 0;\">Genius Astra Automation Engine 🤖</p>\n      <a href=\"https://geniusastra.com\" style=\"color: #4a6cf7; font-size: 12px;\">geniusastra.com</a>\n    </div>\n\n  </div>\n</div>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        12096,
+        1936
+      ],
+      "id": "268d4226-7806-4ae2-8080-8e6c55a4f243",
+      "name": "📧 Gmail — Confirm Stories",
+      "webhookId": "1fdd6583-0976-41e4-b94f-49e0864e9d9c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rGsdLu9a3bbdpBQ9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "otunservices@gmail.com, phoenixtec0@gmail.com",
+        "subject": "=✅ POST PUBLICADO — Genius Astra |  {{ $json.design_ID }}",
+        "message": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background-color: #f9f9f9; border-radius: 12px;\">\n  \n  <!-- HEADER -->\n  <div style=\"background-color: #0d0d0d; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;\">\n    <h1 style=\"color: #ffffff; margin: 0; font-size: 20px;\">🤖 Genius Astra Automation Engine</h1>\n    <p style=\"color: #aaaaaa; margin: 6px 0 0; font-size: 13px;\">Sistema de Publicación Instagram</p>\n  </div>\n\n  <!-- STATUS BADGE -->\n  <div style=\"background-color: #28a745; padding: 14px 20px; text-align: center;\">\n    <h2 style=\"color: #ffffff; margin: 0; font-size: 18px;\">✅ Publicación Exitosa</h2>\n  </div>\n\n  <!-- BODY -->\n  <div style=\"background-color: #ffffff; padding: 24px; border-radius: 0 0 10px 10px;\">\n    \n    <!-- META INFO -->\n    <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 20px;\">\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px; width: 40%;\">📌 Template N°</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $json.template_n }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">🆔 Design ID</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px; word-break: break-all;\">{{ $json.design_ID }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">📐 Formato</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px; text-transform: capitalize;\">{{ $json.format }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">📅 Día</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('EEEE dd MMMM yyyy') }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">🕐 Hora</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('hh:mm a') }} EST</td>\n      </tr>\n    </table>\n\n    <!-- CAPTION PREVIEW -->\n    <div style=\"background-color: #f0f4ff; border-left: 4px solid #4a6cf7; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px;\">\n      <p style=\"margin: 0 0 6px; color: #4a6cf7; font-size: 12px; font-weight: bold;\">📝 CAPTION PUBLICADO</p>\n      <p style=\"margin: 0; color: #333; font-size: 13px; line-height: 1.6;\">{{ $json.description }}</p>\n    </div>\n\n    <!-- IMAGE PREVIEW -->\n    <p style=\"color: #666; font-size: 12px; margin: 0 0 8px; font-weight: bold;\">🖼️ IMAGEN EXPORTADA</p>\n    <img src=\"{{ $json.image_url }}\" \n         width=\"100%\" \n         style=\"border-radius: 10px; border: 1px solid #e0e0e0; display: block;\"/>\n\n    <!-- FOOTER -->\n    <div style=\"margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; text-align: center;\">\n      <p style=\"color: #999; font-size: 12px; margin: 0;\">Publicado automáticamente por</p>\n      <p style=\"color: #0d0d0d; font-size: 14px; font-weight: bold; margin: 4px 0 0;\">Genius Astra Automation Engine 🤖</p>\n      <a href=\"https://geniusastra.com\" style=\"color: #4a6cf7; font-size: 12px;\">geniusastra.com</a>\n    </div>\n\n  </div>\n</div>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        12080,
+        1552
+      ],
+      "id": "295d01bb-6bef-4ff3-800d-2818283fbff7",
+      "name": "📧 Gmail — Confim Post",
+      "webhookId": "1fdd6583-0976-41e4-b94f-49e0864e9d9c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rGsdLu9a3bbdpBQ9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://getlate.dev/api/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk_d1f53761563f3327c0981b19ea499e6426c4ada2865f28f41f4321751654fef1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}\\n\\n{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"image\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"story\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        11616,
+        2128
+      ],
+      "id": "b42c28d1-df08-4415-9805-8885cc910574",
+      "name": "📸 Carousel to Instagram (Getlate)"
+    },
+    {
+      "parameters": {
+        "sendTo": "=otunservices@gmail.com, phoenixtec0@gmail.com",
+        "subject": "=✅ CAROUSEL PUBLICADO — Genius Astra |  {{ $json.design_ID }}",
+        "message": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background-color: #f9f9f9; border-radius: 12px;\">\n  \n  <!-- HEADER -->\n  <div style=\"background-color: #0d0d0d; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;\">\n    <h1 style=\"color: #ffffff; margin: 0; font-size: 20px;\">🤖 Genius Astra Automation Engine</h1>\n    <p style=\"color: #aaaaaa; margin: 6px 0 0; font-size: 13px;\">Sistema de Publicación Instagram</p>\n  </div>\n\n  <!-- STATUS BADGE -->\n  <div style=\"background-color: #28a745; padding: 14px 20px; text-align: center;\">\n    <h2 style=\"color: #ffffff; margin: 0; font-size: 18px;\">✅ Publicación Exitosa</h2>\n  </div>\n\n  <!-- BODY -->\n  <div style=\"background-color: #ffffff; padding: 24px; border-radius: 0 0 10px 10px;\">\n    \n    <!-- META INFO -->\n    <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 20px;\">\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px; width: 40%;\">📌 Template N°</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $json.template_n }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">🆔 Design ID</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px; word-break: break-all;\">{{ $json.design_ID }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">📐 Formato</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px; text-transform: capitalize;\">{{ $json.format }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">📅 Día</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('EEEE dd MMMM yyyy') }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">🕐 Hora</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('hh:mm a') }} EST</td>\n      </tr>\n    </table>\n\n    <!-- CAPTION PREVIEW -->\n    <div style=\"background-color: #f0f4ff; border-left: 4px solid #4a6cf7; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px;\">\n      <p style=\"margin: 0 0 6px; color: #4a6cf7; font-size: 12px; font-weight: bold;\">📝 CAPTION PUBLICADO</p>\n      <p style=\"margin: 0; color: #333; font-size: 13px; line-height: 1.6;\">{{ $json.description }}</p>\n    </div>\n\n    <!-- IMAGE PREVIEW -->\n    <p style=\"color: #666; font-size: 12px; margin: 0 0 8px; font-weight: bold;\">🖼️ IMAGEN EXPORTADA</p>\n    <img src=\"{{ $json.image_url }}\" \n         width=\"100%\" \n         style=\"border-radius: 10px; border: 1px solid #e0e0e0; display: block;\"/>\n\n    <!-- FOOTER -->\n    <div style=\"margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; text-align: center;\">\n      <p style=\"color: #999; font-size: 12px; margin: 0;\">Publicado automáticamente por</p>\n      <p style=\"color: #0d0d0d; font-size: 14px; font-weight: bold; margin: 4px 0 0;\">Genius Astra Automation Engine 🤖</p>\n      <a href=\"https://geniusastra.com\" style=\"color: #4a6cf7; font-size: 12px;\">geniusastra.com</a>\n    </div>\n\n  </div>\n</div>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        12096,
+        2128
+      ],
+      "id": "e2d28c6c-c369-474e-86d9-fba4fd2e057f",
+      "name": "📧 Gmail — Confirm Carousel",
+      "webhookId": "1fdd6583-0976-41e4-b94f-49e0864e9d9c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rGsdLu9a3bbdpBQ9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "=POST",
+        "url": "https://getlate.dev/api/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk_d1f53761563f3327c0981b19ea499e6426c4ada2865f28f41f4321751654fef1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"image\" }\n  ],\n  \"platforms\": [\n    { \"platform\": \"facebook\", \"accountId\": \"{{ $('ID Get Late Accounts').item.json.facebook }}\" }\n  ],\n  \"tiktokSettings\": {\n    \"privacy_level\": \"PUBLIC_TO_EVERYONE\",\n    \"allow_comment\": true,\n    \"allow_duet\": true,\n    \"allow_stitch\": true,\n    \"content_preview_confirmed\": true,\n    \"express_consent_given\": true,\n    \"video_made_with_ai\": true\n  },\n  \"publishNow\": true\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        11616,
+        1456
+      ],
+      "id": "6ecced85-cc82-4677-ad6d-3b49e72f4a82",
+      "name": "📘 Post to Facebook (Getlate)1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "=post",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "7df0ec79-0c28-4adf-9b36-572e85d5d608"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "297ea99f-71f6-44f9-a93a-9ad3e3cc24f2",
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "=stories",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2cfa4ee6-9e47-42b0-85b2-efdbc320d03d",
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "=carousel",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        11296,
+        1680
+      ],
+      "id": "cf6e4e37-2585-4bf8-87ec-02c7b0205dfc",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\n\nconst cleanText = (text) => text?.replace(/\\\\\\\\n/g, ' ').replace(/\\\\n/g, ' ').trim() || '';\nconst cleanUrl = (url) => url?.replace(/\\\\\\\\n/g, '').replace(/\\\\n/g, '').trim() || '';\n\nreturn [{\n  json: {\n    Design_ID:   item.Design_ID   || '',\n    Description: cleanText(item.Description),\n    Hashtags:    item.Hashtags    || '',\n    image_url:   cleanUrl(item.image_url),\n    Image_url_2: cleanUrl(item.image_url_2),\n    Image_url_3: cleanUrl(item.image_url_3),\n    image_url_4: cleanUrl(item.image_url_4),\n    format:      item.Format      || '',\n    Status:      item.Status      || ''\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        11088,
+        1696
+      ],
+      "id": "026289ca-3b99-461a-8321-22ca00c552ba",
+      "name": "Clean Data"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ba32f41b-ea6a-4c9d-8b75-134865dc810b",
+              "name": "template_n",
+              "value": "={{ $('Pick By Date').item.json.template_n }}",
+              "type": "string"
+            },
+            {
+              "id": "7551dc7b-e32b-4c8b-a1e7-ee007e97b57b",
+              "name": "design_ID",
+              "value": "={{ $('Pick By Date').item.json.Design_ID }}",
+              "type": "string"
+            },
+            {
+              "id": "8f919705-69b1-487d-84ff-edb03899490d",
+              "name": "=description",
+              "value": "={{ $('Pick By Date').item.json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "cd030703-5a94-45f6-b27e-8b9126e1ec6c",
+              "name": "format",
+              "value": "={{ $('Pick By Date').item.json.Format }}",
+              "type": "string"
+            },
+            {
+              "id": "c3403508-d515-4d5b-a145-35e072a9b688",
+              "name": "image_url",
+              "value": "={{ $('Clean Data').item.json.image_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        11888,
+        1936
+      ],
+      "id": "4d25ce30-4da5-4bb1-afa3-33c63cc38685",
+      "name": "Set Gmail Data"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ba32f41b-ea6a-4c9d-8b75-134865dc810b",
+              "name": "template_n",
+              "value": "={{ $('Pick By Date').item.json.template_n }}",
+              "type": "string"
+            },
+            {
+              "id": "7551dc7b-e32b-4c8b-a1e7-ee007e97b57b",
+              "name": "design_ID",
+              "value": "={{ $('Pick By Date').item.json.Design_ID }}",
+              "type": "string"
+            },
+            {
+              "id": "8f919705-69b1-487d-84ff-edb03899490d",
+              "name": "=description",
+              "value": "={{ $('Pick By Date').item.json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "cd030703-5a94-45f6-b27e-8b9126e1ec6c",
+              "name": "format",
+              "value": "={{ $('Pick By Date').item.json.Format }}",
+              "type": "string"
+            },
+            {
+              "id": "c3403508-d515-4d5b-a145-35e072a9b688",
+              "name": "image_url",
+              "value": "={{ $('Clean Data').item.json.image_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        11904,
+        1552
+      ],
+      "id": "ebb21b77-c719-4e0b-84b7-6857eb178322",
+      "name": "Set Gmail Data Post"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ba32f41b-ea6a-4c9d-8b75-134865dc810b",
+              "name": "template_n",
+              "value": "={{ $('Pick By Date').item.json.template_n }}",
+              "type": "string"
+            },
+            {
+              "id": "7551dc7b-e32b-4c8b-a1e7-ee007e97b57b",
+              "name": "design_ID",
+              "value": "={{ $('Pick By Date').item.json.Design_ID }}",
+              "type": "string"
+            },
+            {
+              "id": "8f919705-69b1-487d-84ff-edb03899490d",
+              "name": "=description",
+              "value": "={{ $('Pick By Date').item.json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "cd030703-5a94-45f6-b27e-8b9126e1ec6c",
+              "name": "format",
+              "value": "={{ $('Pick By Date').item.json.Format }}",
+              "type": "string"
+            },
+            {
+              "id": "c3403508-d515-4d5b-a145-35e072a9b688",
+              "name": "image_url",
+              "value": "={{ $('Clean Data').item.json.image_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        11888,
+        2128
+      ],
+      "id": "9db806db-a520-4673-be79-c17a242c5b24",
+      "name": "Set Gmail Data Carousel"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        6624,
+        2048
+      ],
+      "id": "f18a64e4-b467-4c24-a296-4d10e4aa2d3b",
+      "name": "OpenAI Embeddings",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 12-15  * * *"
+            }
+          ]
+        }
+      },
+      "name": "⏰ Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        7232,
+        1616
+      ],
+      "id": "7c75aefd-0a77-4230-8a93-ede09040e1a6"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/designs/{{ $json.Design_ID }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        8096,
+        1600
+      ],
+      "id": "22f1f0bb-adba-4874-8019-bee381f80c62",
+      "name": "Get Canva Design Info",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "list",
+          "cachedResultName": "Cronograma de Publicaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        7424,
+        1616
+      ],
+      "id": "d17c836b-dc58-469e-b53d-e2911dd2af67",
+      "name": "Extract Design_ID",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const timeZone = 'America/New_York';\nconst today = new Date().toLocaleDateString('en-US', { \n  weekday: 'long', \n  timeZone \n});\n\nconst rows = $input.all();\n\nconst todayRows = rows.filter(item => {\n  const r = item.json;\n  const dayValue = (r['Day-week'] || '').trim().toLowerCase();\n  const status = (r.Status || '').trim().toLowerCase();\n  return dayValue === today.toLowerCase() && (status === 'pending' || status === '');\n});\n\n// Si hay publicaciones las retorna normal\n// Si no hay, retorna señal sin Design_ID para que el IF lo detecte\nreturn todayRows.length > 0 \n  ? todayRows \n  : [{ json: { hoy: today, mensaje: `Sin publicaciones para ${today}` } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7648,
+        1616
+      ],
+      "id": "1c3ea4d1-02e2-4ecd-a736-ca479dbe2a6c",
+      "name": "Pick By Date"
+    },
+    {
+      "parameters": {
+        "content": "## 🟡 PHASE 4 — APPROVAL VIAGMAILL\nSends preview image + caption to owner via\nWhatsApp (ManyChat number). Waits for webhook\nreply: APPROVE or REJECT.",
+        "height": 130,
+        "width": 648,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        11184,
+        1216
+      ],
+      "id": "98bb6b3d-e76b-4c18-97d9-d2bd3ebf3514",
+      "name": "Note Phase 4"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/exports/{{ $('📤 Export POST1').item.json.job.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "options": {}
+      },
+      "name": "🔗 Get Export URL POST",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        10048,
+        1504
+      ],
+      "id": "5ffc9528-dd6c-4694-94b6-a1a0045e263e",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "otunservices@gmail.com, Phoenixtec0@gmail.com",
+        "subject": "=📭 Sin publicaciones hoy — {{ $now.toFormat('EEEE dd/MM/yyyy') }}",
+        "message": "=Hola equipo Genius Astra 👋  No hay más publicaciones programadas para hoy ({{ $json.fecha }}).  ✅ Las publicaciones del día ya fueron procesadas o no había contenido asignado para este día.  📌 Recuerda revisar el Google Sheets para asignar nuevos diseños a los próximos días.  — Sistema de automatización Genius Astra 🤖",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        8096,
+        1808
+      ],
+      "id": "31fdd716-a6c0-4d90-9377-12d9cd272320",
+      "name": "Send a message",
+      "webhookId": "983fef64-80e5-42bb-ac63-748fc230c081",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rGsdLu9a3bbdpBQ9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5e6dba79-d566-40b5-8161-00562e4b2b7e",
+              "leftValue": "={{ $json.Design_ID }}",
+              "rightValue": "=false",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        7856,
+        1616
+      ],
+      "id": "1650dbae-32ac-458e-a64b-15b6b6f2f742",
+      "name": "If"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Set Post Data1": {
+      "main": [
+        [
+          {
+            "node": "Post image_url1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Post Data HISTORIA1": {
+      "main": [
+        [
+          {
+            "node": "image url stories1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "📤 Export POST1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "📤 Export HISTORIA1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "📤 Export Carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏳ Wait POST1": {
+      "main": [
+        [
+          {
+            "node": "🔗 Get Export URL POST",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📤 Export POST1": {
+      "main": [
+        [
+          {
+            "node": "⏳ Wait POST1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏳ Wait HISTORIA1": {
+      "main": [
+        [
+          {
+            "node": "🔗 Get Export URL HISTORIA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📤 Export HISTORIA1": {
+      "main": [
+        [
+          {
+            "node": "⏳ Wait HISTORIA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔗 Get Export URL HISTORIA1": {
+      "main": [
+        [
+          {
+            "node": "Set Post Data HISTORIA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📤 Export Carousel1": {
+      "main": [
+        [
+          {
+            "node": "⏳ Wait Carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏳ Wait Carousel1": {
+      "main": [
+        [
+          {
+            "node": "🔗 Get Export URL Carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔗 Get Export URL Carousel1": {
+      "main": [
+        [
+          {
+            "node": "Set Post Data Carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Post Data Carousel1": {
+      "main": [
+        [
+          {
+            "node": "image_url carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ID Get Late Accounts": {
+      "main": [
+        [
+          {
+            "node": "Clean Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📸 Stories to Instagram (Getlate)1": {
+      "main": [
+        [
+          {
+            "node": "Set Gmail Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "image url stories1": {
+      "main": [
+        [
+          {
+            "node": "ID Get Late Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "image_url carousel1": {
+      "main": [
+        [
+          {
+            "node": "ID Get Late Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post image_url1": {
+      "main": [
+        [
+          {
+            "node": "ID Get Late Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Detect Format": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📸 Post to Instagram (Getlate)": {
+      "main": [
+        [
+          {
+            "node": "Set Gmail Data Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "✅Mark as Published": {
+      "main": [
+        []
+      ]
+    },
+    "✅Mark as Published1": {
+      "main": [
+        []
+      ]
+    },
+    "✅Mark as Published2": {
+      "main": [
+        []
+      ]
+    },
+    "📸 Carousel to Instagram (Getlate)": {
+      "main": [
+        [
+          {
+            "node": "Set Gmail Data Carousel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📧 Gmail — Confim Post": {
+      "main": [
+        [
+          {
+            "node": "✅Mark as Published",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📧 Gmail — Confirm Carousel": {
+      "main": [
+        [
+          {
+            "node": "✅Mark as Published2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📧 Gmail — Confirm Stories": {
+      "main": [
+        [
+          {
+            "node": "✅Mark as Published1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📘 Post to Facebook (Getlate)1": {
+      "main": [
+        [
+          {
+            "node": "Set Gmail Data Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "📸 Post to Instagram (Getlate)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "📘 Post to Facebook (Getlate)1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "📸 Stories to Instagram (Getlate)1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "📸 Carousel to Instagram (Getlate)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Data": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Gmail Data": {
+      "main": [
+        [
+          {
+            "node": "📧 Gmail — Confirm Stories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Gmail Data Post": {
+      "main": [
+        [
+          {
+            "node": "📧 Gmail — Confim Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Gmail Data Carousel": {
+      "main": [
+        [
+          {
+            "node": "📧 Gmail — Confirm Carousel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏰ Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract Design_ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Canva Design Info": {
+      "main": [
+        [
+          {
+            "node": "Detect Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Design_ID": {
+      "main": [
+        [
+          {
+            "node": "Pick By Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick By Date": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔗 Get Export URL POST": {
+      "main": [
+        [
+          {
+            "node": "Set Post Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get Canva Design Info",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "9a0419e1-8bea-4559-a80c-6ab65e3bf7d7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "747783bda3f10a4d4023457d44f25ea0576e9cc9460c72700a587b2653a24d87"
+  },
+  "id": "tkfCIYGtz6MSxIqj",
+  "tags": [
+    {
+      "updatedAt": "2026-01-26T01:49:01.316Z",
+      "createdAt": "2026-01-26T01:49:01.316Z",
+      "id": "IQSHOhzggibPnE2R",
+      "name": "ai-content-generation"
+    }
+  ]
+}
