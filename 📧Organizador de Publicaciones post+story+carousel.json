@@ -1,5 +1,5 @@
 {
-  "name": "📧Organizador de Publicaciones post+story+carousel",
+  "name": "📧Organizador de Publicaciones post+story+carouselFlex",
   "nodes": [
     {
       "parameters": {
@@ -11,7 +11,7 @@
         6624,
         2048
       ],
-      "id": "f18a64e4-b467-4c24-a296-4d10e4aa2d3b",
+      "id": "8ecc5024-4d59-4c1a-a452-dbc4867ecdc1",
       "name": "OpenAI Embeddings",
       "credentials": {
         "openAiApi": {
@@ -30,8 +30,103 @@
         5216,
         3200
       ],
-      "id": "dce5de1f-72df-4018-a624-d5c28aa9d404",
+      "id": "901b2504-bdeb-4f7a-834a-d766763cca86",
       "name": "OpenAI Embeddings2",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        11968,
+        3936
+      ],
+      "id": "caa71f61-1128-44a3-91d0-151f83184f0e",
+      "name": "OpenAI Embeddings1",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        9136,
+        1776
+      ],
+      "id": "ec65a289-e9e0-4606-8870-fb4277535120",
+      "name": "OpenAI Embeddings3",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        7728,
+        2928
+      ],
+      "id": "4ac4d129-c325-4f17-839f-b7a0396d2226",
+      "name": "OpenAI Embeddings4",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4224,
+        2752
+      ],
+      "id": "ca498e5a-e7cb-4d56-b916-3de0e523b5b8",
+      "name": "OpenAI Embeddings5",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2816,
+        3904
+      ],
+      "id": "8ade2d17-c16c-4131-bd5f-41ddee1d7687",
+      "name": "OpenAI Embeddings6",
       "credentials": {
         "openAiApi": {
           "id": "6oB1WcrnL1nJ1HjL",
@@ -49,129 +144,11 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        7680,
-        3968
+        10352,
+        4000
       ],
-      "id": "5f19d7a7-73db-469c-966b-b0d8175db340",
-      "name": "Note Phase "
-    },
-    {
-      "parameters": {
-        "content": "## 🟠 PHASE 3 — CANVA TEMPLATE\nUses Canva API to populate your branded\ntemplate with Title + Description.\nReturns a preview image URL\n\nNEW VERSION MARCH 14 ADDING CAROUSEL",
-        "height": 184,
-        "width": 1008,
-        "color": 3
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        9056,
-        3840
-      ],
-      "id": "8c756083-08ed-4333-8d2d-0a1632b56277",
-      "name": "Note Phase 5"
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 3
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json.format }}",
-                    "rightValue": "post",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "id": "912387cd-9362-4299-a8d3-aa24453b0a9d"
-                  }
-                ],
-                "combinator": "and"
-              }
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 3
-                },
-                "conditions": [
-                  {
-                    "id": "cae00f07-642c-40cd-bf9a-bc72b04c44c9",
-                    "leftValue": "={{ $json.format }}",
-                    "rightValue": "=stories",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              }
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 3
-                },
-                "conditions": [
-                  {
-                    "id": "7ba0e64c-3d4d-4c35-bda5-74834047edf9",
-                    "leftValue": "={{ $json.format }}",
-                    "rightValue": "carousel",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              }
-            }
-          ]
-        },
-        "looseTypeValidation": "={{ false }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.4,
-      "position": [
-        8832,
-        4144
-      ],
-      "id": "a86f1f77-283c-4482-8978-404afb1e32e7",
-      "name": "Switch1"
-    },
-    {
-      "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={\n \"facebook\": \"697aafb377637c5c857cb630\",\n \"facebook_page_id\": \"61585073977460\",\n \"instagram\": \"69c342716cb7b8cf4c9861e8\",\n \"linkedin\": \"697ab30077637c5c857cb6a1\"\n}\n\n\n",
-        "includeOtherFields": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        11152,
-        4256
-      ],
-      "id": "c596cd86-b05b-410a-82c9-bf94b1ba7844",
-      "name": "ID Get Late Accounts"
+      "id": "f394a55f-6cde-49d9-b068-235b5f9f6421",
+      "name": "Note Phase 1"
     },
     {
       "parameters": {
@@ -192,17 +169,17 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"{{ $('Detect Format').item.json.getlate_media_type }}\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"story\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
+        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \n      \"url\": \"{{ $json.image_url }}\", \n      \"type\": \"{{ $('Detect Format').item.json.getlate_media_type }}\" \n    }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"story\",\n        \"stickers\": [\n          {\n            \"type\": \"link\",\n            \"link\": \"{{ $('Clean Data').item.json.Web_links }}\",\n            \"x\": 0.5,\n            \"y\": 0.7,\n            \"rotation\": 0,\n            \"scale\": 0.8\n          }\n        ],\n        \"sticker\": {\n          \"type\": \"link\",\n          \"link\": \"{{ $('Clean Data').item.json.Web_links }}\",\n          \"x\": 0.5,\n          \"y\": 0.7\n        }\n      }\n    }\n  ],\n  \"publishNow\": true\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        11888,
-        4496
+        14560,
+        4528
       ],
-      "id": "977eef53-557c-4ec7-ba03-c89f1b32e26e",
-      "name": "📸 Stories to Instagram (Getlate)1"
+      "id": "a77a93aa-d826-4df2-b460-ee0c5c5fc6b8",
+      "name": "📸 Stories to Instagram (Getlate)"
     },
     {
       "parameters": {
@@ -359,30 +336,17 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        12576,
-        4496
+        15248,
+        4528
       ],
-      "id": "d8fdc9b1-9a10-4395-a62b-5d7190220c19",
-      "name": "✅Mark as Published1",
+      "id": "a5242d27-28c6-4c75-9c6f-168422a720ae",
+      "name": "✅Mark as Published3",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "ZVkYY5blo2ajMfxn",
           "name": "Google Sheets account"
         }
       }
-    },
-    {
-      "parameters": {
-        "jsCode": "const designInfo = $('Get Canva Design Info').item.json.design;\nconst pagesInfo = $('Get Canva Pages Info').item.json.items || [];\n\n// 1. CONTEO REAL DE PÁGINAS\nconst pageCount = pagesInfo.length || designInfo.page_count || 1;\n\n// 2. DETECCIÓN DE VIDEO (MP4)\n// En Canva, si el diseño tiene una duración global o si el thumbnail es de un video,\n// o si el usuario lo exporta como video. \n// Como no tenemos el export-metadata aún, usamos una técnica infalible:\n// Si el diseño es vertical (Story) y tiene CUALQUIER elemento animado, \n// Canva lo trata como video. \n// Vamos a usar el ratio de la PRIMERA PÁGINA real, no del thumbnail.\nconst firstPage = pagesInfo[0] || {};\nconst width = firstPage.dimensions?.width || designInfo.thumbnail?.width || 1080;\nconst height = firstPage.dimensions?.height || designInfo.thumbnail?.height || 1920;\nconst ratio = width / height;\n\nlet format;\nlet media_type = 'image'; // default\nlet detection_method;\n\nif (ratio < 0.65) {\n  // FORMATO VERTICAL (Story / Reel)\n  format = 'stories';\n  detection_method = 'aspect_ratio_vertical';\n  \n  // REGLA DE ORO PARA STORIES: \n  // Si es vertical, casi siempre el usuario querrá exportarlo como video si hay animaciones.\n  // Para forzar MP4 en GetLate cuando es Story, marcamos media_type como video\n  // si tiene más de 1 página o si el título sugiere video.\n  const title = (designInfo.title || '').toLowerCase();\n  const isVideoTitle = title.includes('video') || title.includes('mp4') || title.includes('reel') || title.includes('animado');\n  \n  if (pageCount > 1 || isVideoTitle) {\n    media_type = 'video';\n  } else {\n    // Si es 1 sola página vertical, pero el usuario dice que es video...\n    // En Canva, un video de 1 sola página se diferencia porque tiene una duración.\n    // Por ahora, si es Story, permitiremos que el usuario fuerce video con el título\n    // o simplemente lo trataremos como video si detectamos que es una Story animada.\n    media_type = isVideoTitle ? 'video' : 'image';\n  }\n} else if (pageCount > 1) {\n  // FORMATO NO VERTICAL + MULTIPÁGINA = CAROUSEL\n  format = 'carousel';\n  media_type = 'image';\n  detection_method = 'page_count_multipane';\n} else {\n  // FORMATO CUADRADO/HORIZONTAL + 1 PÁGINA = POST\n  format = 'post';\n  media_type = 'image';\n  detection_method = 'aspect_ratio_square';\n}\n\nreturn [{ json: {\n  Design_ID: designInfo.id,\n  format: format,\n  media_type: media_type,\n  ratio: ratio,\n  pages: pageCount,\n  title: designInfo.title,\n  detection_method: detection_method,\n  getlate_media_type: media_type === 'video' ? 'video' : 'image',\n  // Datos técnicos para depuración\n  _tech: {\n    real_width: width,\n    real_height: height,\n    real_pages: pageCount\n  }\n}}];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        8592,
-        4160
-      ],
-      "id": "6eb15f43-10d0-4b20-aac8-1f87faa4344f",
-      "name": "Detect Format"
     },
     {
       "parameters": {
@@ -393,7 +357,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer sk_d1f53761563f3327c0981b19ea499e6426c4ada2865f28f41f4321751654fef1"
+              "value": "Bearer sk_6ad5301178c80ae417ca7764dbf2c8ecc48a56ee7408a0b7e171969496c94cf2"
             },
             {
               "name": "Content-Type",
@@ -403,17 +367,17 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"{{ $('Detect Format').item.json.getlate_media_type }}\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"story\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
+        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"{{ $('Detect Format').item.json.getlate_media_type }}\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"post\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        11888,
-        4240
+        14560,
+        4272
       ],
-      "id": "68ae527a-c8b1-4b4a-98ff-8b6af0982893",
-      "name": "📸 Post to Instagram (Getlate)"
+      "id": "3af7fec9-a594-4d7d-b1fa-7157ac8df835",
+      "name": "📸 Post to Instagram (Getlate)1"
     },
     {
       "parameters": {
@@ -540,11 +504,11 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        12512,
-        4112
+        15184,
+        4144
       ],
-      "id": "51b9c740-9599-4225-8e23-351da5c97fef",
-      "name": "✅Mark as Published",
+      "id": "62101e57-191d-4d34-a0ed-7326d9032714",
+      "name": "✅Mark as Published4",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "ZVkYY5blo2ajMfxn",
@@ -677,11 +641,11 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        12576,
-        4688
+        15248,
+        4720
       ],
-      "id": "166be92f-5a74-4edb-a74b-3328a969ac22",
-      "name": "✅Mark as Published2",
+      "id": "a183d332-f54b-47d5-aa75-c8a91955dbd4",
+      "name": "✅Mark as Published5",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "ZVkYY5blo2ajMfxn",
@@ -692,7 +656,7 @@
     {
       "parameters": {
         "sendTo": "otunservices@gmail.com, phoenixtec0@gmail.com",
-        "subject": "✅ STORIES PUBLICADO — Genius Astra | {{ $json.design_ID }}",
+        "subject": "=✅ STORIES PUBLICADO — Genius Astra | {{ $json.design_ID }}",
         "message": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background-color: #f9f9f9; border-radius: 12px;\">\n  \n  <!-- HEADER -->\n  <div style=\"background-color: #0d0d0d; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;\">\n    <h1 style=\"color: #ffffff; margin: 0; font-size: 20px;\">🤖 Genius Astra Automation Engine</h1>\n    <p style=\"color: #aaaaaa; margin: 6px 0 0; font-size: 13px;\">Sistema de Publicación Instagram</p>\n  </div>\n\n  <!-- STATUS BADGE -->\n  <div style=\"background-color: #28a745; padding: 14px 20px; text-align: center;\">\n    <h2 style=\"color: #ffffff; margin: 0; font-size: 18px;\">✅ Publicación Exitosa</h2>\n  </div>\n\n  <!-- BODY -->\n  <div style=\"background-color: #ffffff; padding: 24px; border-radius: 0 0 10px 10px;\">\n    \n    <!-- META INFO -->\n    <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 20px;\">\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px; width: 40%;\">📌 Template N°</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $json.template_n }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">🆔 Design ID</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px; word-break: break-all;\">{{ $json.design_ID }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">📐 Formato</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px; text-transform: capitalize;\">{{ $json.format }}</td>\n      </tr>\n      <tr style=\"background-color: #f5f5f5;\">\n        <td style=\"padding: 8px 6px; color: #666; font-size: 13px;\">📅 Día</td>\n        <td style=\"padding: 8px 6px; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('EEEE dd MMMM yyyy') }}</td>\n      </tr>\n      <tr>\n        <td style=\"padding: 8px 0; color: #666; font-size: 13px;\">🕐 Hora</td>\n        <td style=\"padding: 8px 0; font-weight: bold; font-size: 13px;\">{{ $now.toFormat('hh:mm a') }} EST</td>\n      </tr>\n    </table>\n\n    <!-- CAPTION PREVIEW -->\n    <div style=\"background-color: #f0f4ff; border-left: 4px solid #4a6cf7; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px;\">\n      <p style=\"margin: 0 0 6px; color: #4a6cf7; font-size: 12px; font-weight: bold;\">📝 CAPTION PUBLICADO</p>\n      <p style=\"margin: 0; color: #333; font-size: 13px; line-height: 1.6;\">{{ $json.description }}</p>\n    </div>\n\n    <!-- IMAGE PREVIEW -->\n    <p style=\"color: #666; font-size: 12px; margin: 0 0 8px; font-weight: bold;\">🖼️ IMAGEN EXPORTADA</p>\n    <img src=\"{{ $json.image_url }}\" \n         width=\"100%\" \n         style=\"border-radius: 10px; border: 1px solid #e0e0e0; display: block;\"/>\n\n    <!-- FOOTER -->\n    <div style=\"margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; text-align: center;\">\n      <p style=\"color: #999; font-size: 12px; margin: 0;\">Publicado automáticamente por</p>\n      <p style=\"color: #0d0d0d; font-size: 14px; font-weight: bold; margin: 4px 0 0;\">Genius Astra Automation Engine 🤖</p>\n      <a href=\"https://geniusastra.com\" style=\"color: #4a6cf7; font-size: 12px;\">geniusastra.com</a>\n    </div>\n\n  </div>\n</div>",
         "options": {
           "appendAttribution": false
@@ -701,12 +665,12 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        12368,
-        4496
+        15040,
+        4528
       ],
-      "id": "929eaa55-772b-404e-a8dd-d7008f279630",
-      "name": "📧 Gmail — Confirm Stories",
-      "webhookId": "1fdd6583-0976-41e4-b94f-49e0864e9d9c",
+      "id": "8efceb56-4465-4824-87de-6a7e88eb7283",
+      "name": "📧 Gmail — Confirm Stories1",
+      "webhookId": "9f941744-7e15-4d69-b824-6c339d58cfac",
       "credentials": {
         "gmailOAuth2": {
           "id": "rGsdLu9a3bbdpBQ9",
@@ -726,49 +690,18 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        12352,
-        4112
+        15024,
+        4144
       ],
-      "id": "0c282262-432c-4c91-a57e-28927ab4412f",
-      "name": "📧 Gmail — Confim Post",
-      "webhookId": "1fdd6583-0976-41e4-b94f-49e0864e9d9c",
+      "id": "1fb698b7-8c66-4709-8f86-215cdde17998",
+      "name": "📧 Gmail — Confim Post1",
+      "webhookId": "5774c9f0-7c4f-4a10-9a4d-7613a097bb0d",
       "credentials": {
         "gmailOAuth2": {
           "id": "rGsdLu9a3bbdpBQ9",
           "name": "Gmail account"
         }
       }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=https://getlate.dev/api/v1/posts",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer sk_d1f53761563f3327c0981b19ea499e6426c4ada2865f28f41f4321751654fef1"
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $json.image_url }}\", \"type\": \"{{ $('Detect Format').item.json.getlate_media_type }}\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"story\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        11888,
-        4688
-      ],
-      "id": "3eb34d5e-4608-4164-a269-43983142ac91",
-      "name": "📸 Carousel to Instagram (Getlate)"
     },
     {
       "parameters": {
@@ -782,12 +715,12 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        12368,
-        4688
+        15040,
+        4720
       ],
-      "id": "05d9b9bc-6802-4e14-a8ff-180b23e12f81",
-      "name": "📧 Gmail — Confirm Carousel",
-      "webhookId": "1fdd6583-0976-41e4-b94f-49e0864e9d9c",
+      "id": "852e62cb-6fd0-45b5-ac8d-d5842f9a4642",
+      "name": "📧 Gmail — Confirm Carousel1",
+      "webhookId": "073b535c-5b99-4b5c-8493-3aa37b36ac4e",
       "credentials": {
         "gmailOAuth2": {
           "id": "rGsdLu9a3bbdpBQ9",
@@ -804,7 +737,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer sk_d1f53761563f3327c0981b19ea499e6426c4ada2865f28f41f4321751654fef1"
+              "value": "Bearer sk_6ad5301178c80ae417ca7764dbf2c8ecc48a56ee7408a0b7e171969496c94cf2"
             },
             {
               "name": "Content-Type",
@@ -820,11 +753,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        11888,
-        4016
+        14560,
+        4048
       ],
-      "id": "487f9bf5-6412-44a8-9f34-e2bce7932a80",
-      "name": "📘 Post to Facebook (Getlate)1"
+      "id": "32a8f1b2-0531-4403-933e-0bde9466a46a",
+      "name": "📘 Post to Facebook (Getlate)"
     },
     {
       "parameters": {
@@ -903,24 +836,11 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        11568,
-        4240
+        14240,
+        4272
       ],
-      "id": "747e58f9-87ee-4ee8-827d-9b5b4f6c7174",
-      "name": "Switch"
-    },
-    {
-      "parameters": {
-        "jsCode": "const item = $input.first().json;\n\nconst cleanText = (text) => text?.replace(/\\\\\\\\n/g, ' ').replace(/\\\\n/g, ' ').trim() || '';\nconst cleanUrl = (url) => url?.replace(/\\\\\\\\n/g, '').replace(/\\\\n/g, '').trim() || '';\n\nreturn [{\n  json: {\n    Design_ID:   item.Design_ID   || '',\n    Description: cleanText(item.Description),\n    Hashtags:    item.Hashtags    || '',\n    image_url:   cleanUrl(item.image_url),\n    Image_url_2: cleanUrl(item.image_url_2),\n    Image_url_3: cleanUrl(item.image_url_3),\n    image_url_4: cleanUrl(item.image_url_4),\n    format:      item.Format      || '',\n    Status:      item.Status      || ''\n  }\n}];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        11360,
-        4256
-      ],
-      "id": "fc38489c-d4ac-46d7-a403-4bb11bf4e598",
-      "name": "Clean Data"
+      "id": "ff41d77f-7500-4086-ae1f-7a6559cf8f9d",
+      "name": "Switch3"
     },
     {
       "parameters": {
@@ -963,11 +883,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        12160,
-        4496
+        14832,
+        4528
       ],
-      "id": "0c1bb806-bb6c-48b3-ac2e-0fd2d727c506",
-      "name": "Set Gmail Data"
+      "id": "5535014d-c011-4aab-8ead-0fe04d0da744",
+      "name": "Set Gmail Data1"
     },
     {
       "parameters": {
@@ -1010,11 +930,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        12176,
-        4112
+        14848,
+        4144
       ],
-      "id": "9d00c97c-17cf-4d91-ab64-3795ea08ab3a",
-      "name": "Set Gmail Data Post"
+      "id": "b0de4830-9aa3-4aea-b3ee-36e6291a04d5",
+      "name": "Set Gmail Data Post1"
     },
     {
       "parameters": {
@@ -1057,11 +977,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        12160,
-        4688
+        14832,
+        4720
       ],
-      "id": "8473198f-3362-4f04-a2b6-74727409f128",
-      "name": "Set Gmail Data Carousel"
+      "id": "a72998d3-d5c4-4ab2-ab26-d714b615107d",
+      "name": "Set Gmail Data Carousel1"
     },
     {
       "parameters": {
@@ -1074,98 +994,14 @@
           ]
         }
       },
-      "name": "⏰ Schedule Trigger",
+      "name": "⏰ Schedule Trigger3",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        7232,
-        4160
+        9888,
+        4192
       ],
-      "id": "c044278c-d138-4a12-ae6b-e895c3f23f87"
-    },
-    {
-      "parameters": {
-        "url": "=https://api.canva.com/rest/v1/designs/{{ $json.Design_ID }}",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "oAuth2Api",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        8112,
-        4144
-      ],
-      "id": "12cbf24e-9c9e-4fc3-ba14-8a1c56e38101",
-      "name": "Get Canva Design Info",
-      "credentials": {
-        "oAuth2Api": {
-          "id": "b3peiFzYIOLnL9te",
-          "name": "Genius Auth"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
-          "mode": "list",
-          "cachedResultName": "Cronograma de Publicaciones",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        7424,
-        4160
-      ],
-      "id": "2d48e727-9290-4d3b-aa30-91b28aa43abb",
-      "name": "Extract Design_ID",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "ZVkYY5blo2ajMfxn",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const timeZone = 'America/New_York';\nconst today = new Date().toLocaleDateString('en-US', { \n  weekday: 'long', \n  timeZone \n});\n\nconst rows = $input.all();\n\nconst todayRows = rows.filter(item => {\n  const r = item.json;\n  const dayMatch = r['Day-week']?.trim().toLowerCase() === today.toLowerCase();\n  const status = (r.Status || '').trim().toLowerCase();\n  const isPending = status === 'pending' || status === '';\n  return dayMatch && isPending;\n});\n\nif (todayRows.length === 0) {\n  return []; \n}\n\nreturn todayRows;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        7648,
-        4160
-      ],
-      "id": "cade8315-a3d8-4590-a7e1-71575f6f2533",
-      "name": "Pick By Date"
-    },
-    {
-      "parameters": {
-        "content": "## 🟡 PHASE 4 — APPROVAL VIAGMAILL\nSends preview image + caption to owner via\nWhatsApp (ManyChat number). Waits for webhook\nreply: APPROVE or REJECT.",
-        "height": 130,
-        "width": 648,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        11456,
-        3776
-      ],
-      "id": "843423da-cf95-490c-812c-f5c713dbcc11",
-      "name": "Note Phase 4"
+      "id": "87b83af6-3ba0-4b05-9fd2-c56b1df86a94"
     },
     {
       "parameters": {
@@ -1174,93 +1010,14 @@
         "nodeCredentialType": "oAuth2Api",
         "options": {}
       },
-      "name": "🔗 Get Export URL POST",
+      "name": "🔗 Get Export URL POST1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        10320,
-        4064
+        13008,
+        3984
       ],
-      "id": "ab5934de-cb96-4f22-9dc2-2526a190fa74",
-      "credentials": {
-        "oAuth2Api": {
-          "id": "b3peiFzYIOLnL9te",
-          "name": "Genius Auth"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "sendTo": "otunservices@gmail.com, Phoenixtec0@gmail.com",
-        "subject": "=📭 Sin publicaciones hoy — {{ $now.toFormat('EEEE dd/MM/yyyy') }}",
-        "message": "=Hola equipo Genius Astra 👋  No hay más publicaciones programadas para hoy ({{ $json.fecha }}).  ✅ Las publicaciones del día ya fueron procesadas o no había contenido asignado para este día.  📌 Recuerda revisar el Google Sheets para asignar nuevos diseños a los próximos días.  — Sistema de automatización Genius Astra 🤖",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.2,
-      "position": [
-        8096,
-        4352
-      ],
-      "id": "8d531376-54cb-4286-b6b1-af9fd0643345",
-      "name": "Send a message",
-      "webhookId": "983fef64-80e5-42bb-ac63-748fc230c081",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "rGsdLu9a3bbdpBQ9",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "5e6dba79-d566-40b5-8161-00562e4b2b7e",
-              "leftValue": "={{ $json.Design_ID }}",
-              "rightValue": "=false",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        7856,
-        4160
-      ],
-      "id": "fc30d8b9-269d-465d-a6c7-0b196631c25f",
-      "name": "If"
-    },
-    {
-      "parameters": {
-        "url": "=https://api.canva.com/rest/v1/designs/{{ $json.design.id }}/pages",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "oAuth2Api",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        8368,
-        4160
-      ],
-      "id": "3e243955-f331-4409-b5ee-874c3b873401",
-      "name": "Get Canva Pages Info",
+      "id": "75ed9e50-1efd-4085-b8b3-67016b976865",
       "credentials": {
         "oAuth2Api": {
           "id": "b3peiFzYIOLnL9te",
@@ -1275,11 +1032,11 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        6896,
-        4608
+        9568,
+        4640
       ],
-      "id": "51195b43-2d6d-4160-8e21-3178177eccd1",
-      "name": "OpenAI Embeddings1",
+      "id": "b24e8393-4422-46e2-8030-619a8d014adc",
+      "name": "OpenAI Embeddings7",
       "credentials": {
         "openAiApi": {
           "id": "6oB1WcrnL1nJ1HjL",
@@ -1289,49 +1046,18 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.canva.com/rest/v1/exports",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "oAuth2Api",
-        "sendBody": true,
-        "specifyBody": "=json",
-        "bodyParameters": {
-          "parameters": [
-            {}
-          ]
-        },
-        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": {{ \n    $('Detect Format').item.json.getlate_media_type === 'video' \n    ? '{ \"type\": \"mp4\", \"quality\": \"vertical_1080p\" }' \n    : '{ \"type\": \"png\" }' \n  }}\n}\n",
-        "options": {}
-      },
-      "name": "📤 Export HISTORIA",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        9824,
-        4320
-      ],
-      "id": "f8378850-2091-486a-9b53-8f54320fcc2c",
-      "credentials": {
-        "oAuth2Api": {
-          "id": "b3peiFzYIOLnL9te",
-          "name": "Genius Auth"
-        }
-      }
-    },
-    {
-      "parameters": {
         "amount": 2,
         "unit": "minutes"
       },
-      "name": "⏳ Wait HISTORIA",
+      "name": "⏳ Wait HISTORIA1",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        10064,
-        4320
+        12752,
+        4240
       ],
-      "webhookId": "dec29e0a-fcca-45a0-a2ae-840295bb18cd",
-      "id": "c2e25e60-18e5-46bd-8c44-48b987d5e1b3"
+      "webhookId": "0449e2c5-ae43-48e8-a774-49d324f935b4",
+      "id": "7494e949-c365-4081-8bb9-8a602c8055d9"
     },
     {
       "parameters": {
@@ -1340,14 +1066,14 @@
         "nodeCredentialType": "oAuth2Api",
         "options": {}
       },
-      "name": "🔗 Get Export URL HISTORIA",
+      "name": "🔗 Get Export URL HISTORIA1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        10320,
-        4320
+        13008,
+        4240
       ],
-      "id": "b5b48248-b6b4-4963-a770-8831895ed342",
+      "id": "4af46df1-b218-4267-ab9e-d8831f2f116d",
       "credentials": {
         "oAuth2Api": {
           "id": "b3peiFzYIOLnL9te",
@@ -1360,87 +1086,30 @@
         "amount": 2,
         "unit": "minutes"
       },
-      "name": "⏳ Wait Carousel",
+      "name": "⏳ Wait Carousel1",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        10080,
-        4592
+        12768,
+        4528
       ],
-      "webhookId": "9b553797-4c1a-4ac9-ba93-6193ea0b65d8",
-      "id": "1be4fcf7-a968-4218-8e5f-0c42e7100b4e"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.canva.com/rest/v1/exports",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "oAuth2Api",
-        "sendBody": true,
-        "specifyBody": "=json",
-        "bodyParameters": {
-          "parameters": [
-            {}
-          ]
-        },
-        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": {{ \n    $('Detect Format').item.json.getlate_media_type === 'video' \n    ? '{ \"type\": \"mp4\", \"quality\": \"horizontal_1080p\" }' \n    : '{ \"type\": \"png\" }' \n  }}\n}\n",
-        "options": {}
-      },
-      "name": "📤 Export Carousel",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        9808,
-        4592
-      ],
-      "id": "892d1617-c36f-42ea-b36d-607fe53a935c",
-      "credentials": {
-        "oAuth2Api": {
-          "id": "b3peiFzYIOLnL9te",
-          "name": "Genius Auth"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.canva.com/rest/v1/exports",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "oAuth2Api",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": {{ \n    $('Detect Format').item.json.getlate_media_type === 'video' \n    ? '{ \"type\": \"mp4\", \"quality\": \"horizontal_1080p\" }' \n    : '{ \"type\": \"png\" }' \n  }}\n}\n",
-        "options": {}
-      },
-      "name": "📤 Export POST",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        9824,
-        4064
-      ],
-      "id": "ba3ec8ce-248f-4562-9b3a-bf762637efd9",
-      "credentials": {
-        "oAuth2Api": {
-          "id": "b3peiFzYIOLnL9te",
-          "name": "Genius Auth"
-        }
-      }
+      "webhookId": "5310acfc-d083-4dff-a8aa-e84c8c24dcb0",
+      "id": "158e9cd0-a0e3-4c79-8a62-f59614e6f064"
     },
     {
       "parameters": {
         "amount": 2,
         "unit": "minutes"
       },
-      "name": "⏳ Wait POST",
+      "name": "⏳ Wait POST1",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        10064,
-        4064
+        12752,
+        3984
       ],
-      "webhookId": "3c13c9d1-0313-41c8-9ea1-a22baaea9864",
-      "id": "f7df84e4-5827-467c-97f3-e996b183e216"
+      "webhookId": "6c235852-aae4-4dc7-92c1-36feae8e3b78",
+      "id": "3bbb8b26-6e54-4d91-bb85-83c60b6a3b31"
     },
     {
       "parameters": {
@@ -1449,14 +1118,14 @@
         "nodeCredentialType": "oAuth2Api",
         "options": {}
       },
-      "name": "🔗 Get Export URL Carousel",
+      "name": "🔗 Get Export URL Carousel1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        10336,
-        4592
+        13024,
+        4528
       ],
-      "id": "13550640-8d5a-4b05-ab12-2b1f33403b9a",
+      "id": "feec1ff4-80fd-4f7d-bf6b-ab46848628a3",
       "credentials": {
         "oAuth2Api": {
           "id": "b3peiFzYIOLnL9te",
@@ -1483,7 +1152,7 @@
             {
               "id": "a688e124-8191-4fb9-8419-44a7e8c403a4",
               "name": "=image_url",
-              "value": "={{ $('🔗 Get Export URL Carousel').item.json.job.urls[0] }}\n",
+              "value": "={{ $('🔗 Get Export URL Carousel1').item.json.job.urls[0] }}\n",
               "type": "string"
             },
             {
@@ -1553,11 +1222,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        10624,
-        4592
+        13312,
+        4528
       ],
-      "id": "692c2840-3306-46dd-a492-96dfb73400bc",
-      "name": "Set Post Data Carousel"
+      "id": "7cdb6d4c-c552-41ab-900f-6b0bf4ed5d05",
+      "name": "Set Post Data Carousel1"
     },
     {
       "parameters": {
@@ -1578,7 +1247,7 @@
             {
               "id": "a688e124-8191-4fb9-8419-44a7e8c403a4",
               "name": "=image_url",
-              "value": "={{ $('🔗 Get Export URL HISTORIA').item.json.job.urls[0] }}\n",
+              "value": "={{ $('🔗 Get Export URL HISTORIA1').item.json.job.urls[0] }}\n",
               "type": "string"
             },
             {
@@ -1592,52 +1261,11 @@
               "name": "Hashtags",
               "value": "={{ $('Extract Design_ID').item.json.Hashtags }}",
               "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        10624,
-        4320
-      ],
-      "id": "7273471e-7266-4735-83d0-fd44c35c556b",
-      "name": "Set Post Data HISTORIA"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "b79af122-fba3-48cf-9020-58c994f9df0e",
-              "name": "design_id",
-              "value": "={{ $('Pick By Date').item.json.Design_ID }}",
-              "type": "string"
             },
             {
-              "id": "50953655-0281-4452-bb33-73ca639a6067",
-              "name": "image_url",
-              "value": "={{ $('🔗 Get Export URL POST').item.json.job.urls[0] }}\n",
-              "type": "string"
-            },
-            {
-              "id": "073c0c69-65e1-4f9a-a47a-6642a61e30d4",
-              "name": "description",
-              "value": "={{ $('Pick By Date').item.json.Description }}",
-              "type": "string"
-            },
-            {
-              "id": "ada78265-0cee-4c91-b93d-d96b25132bf7",
-              "name": "hashtags",
-              "value": "={{ $('Pick By Date').item.json.Hashtags }}",
-              "type": "string"
-            },
-            {
-              "id": "10b6ef0a-b917-424b-8c2d-0bd62ad47c6d",
-              "name": "format",
-              "value": "={{ $('Pick By Date').item.json.Format }}",
+              "id": "9c5b8bd8-660c-43db-9d99-3ef074c39c31",
+              "name": "Web_links",
+              "value": "={{ $('Pick By Date').item.json.Web_links }}",
               "type": "string"
             }
           ]
@@ -1647,11 +1275,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        10608,
-        4064
+        13312,
+        4240
       ],
-      "id": "add168a2-bdac-4668-8071-39590cc85151",
-      "name": "Set Post Data"
+      "id": "ea944832-7ed2-4a5e-889c-d17df30dacbb",
+      "name": "Set Post Data HISTORIA1"
     },
     {
       "parameters": {
@@ -1811,11 +1439,11 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        10816,
-        4064
+        13504,
+        3984
       ],
-      "id": "32bb05cd-2b6f-42bd-bb49-0ed35918ed41",
-      "name": "Post image_url",
+      "id": "9f814480-0c38-4015-9d8c-3064e09bae41",
+      "name": "Post image_url1",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "ZVkYY5blo2ajMfxn",
@@ -1846,7 +1474,8 @@
             "Format": "={{ $json.Format }}",
             "Status": "pending",
             "Design_ID": "={{ $json.design_id }}",
-            "image_url": "={{ $json.image_url }}"
+            "image_url": "={{ $json.image_url }}",
+            "Web_links": "={{ $json.Web_links }}"
           },
           "matchingColumns": [
             "Design_ID"
@@ -1922,6 +1551,16 @@
               "canBeUsedToMatch": true
             },
             {
+              "id": "Web_links",
+              "displayName": "Web_links",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
               "id": "image_url",
               "displayName": "image_url",
               "required": false,
@@ -1962,6 +1601,46 @@
               "removed": true
             },
             {
+              "id": "image_url_5",
+              "displayName": "image_url_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_url_6",
+              "displayName": "image_url_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_url_7",
+              "displayName": "image_url_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_url_8",
+              "displayName": "image_url_8",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
               "id": "row_number",
               "displayName": "row_number",
               "required": false,
@@ -1981,11 +1660,11 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        10832,
-        4320
+        13520,
+        4240
       ],
-      "id": "c1ea2e8b-2c9d-454f-9113-7f3ff342e9db",
-      "name": "image url stories",
+      "id": "ca5dbb4b-06e6-4965-9db5-3d8eadd0f8a6",
+      "name": "image url stories1",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "ZVkYY5blo2ajMfxn",
@@ -2152,162 +1831,675 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        10848,
-        4592
+        13536,
+        4528
       ],
-      "id": "897c7282-2f2e-4343-9da0-b2a3c8f6157a",
-      "name": "image_url carousel",
+      "id": "38a1d6b8-03c0-4ffa-a6e5-03bd3fb2a48a",
+      "name": "image_url carousel1",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "ZVkYY5blo2ajMfxn",
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        6736,
+        2480
+      ],
+      "id": "774b01c3-ea7c-433d-a933-f4820480077a",
+      "name": "OpenAI Embeddings8",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5328,
+        3632
+      ],
+      "id": "0084e43d-4ee3-4d85-a635-fdf441de645e",
+      "name": "OpenAI Embeddings9",
+      "credentials": {
+        "openAiApi": {
+          "id": "6oB1WcrnL1nJ1HjL",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 17-20  * * *"
+            }
+          ]
+        }
+      },
+      "name": "⏰ Schedule Trigger4",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        9888,
+        4336
+      ],
+      "id": "98e0863c-f159-4b2c-9247-6a1a30bd661d"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 4-6  * * *"
+            }
+          ]
+        }
+      },
+      "name": "⏰ Schedule Trigger5",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        9888,
+        4080
+      ],
+      "id": "3158122d-2049-41e5-86de-cfc6c7126d04"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk",
+          "mode": "list",
+          "cachedResultName": "Cronograma de Publicaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/17_rxFnm7wLOgHGqvMmYaQm2HAqwFUiDAUji8q5cg3Bk/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        10096,
+        4192
+      ],
+      "id": "c0c03c75-bbf3-4354-9d17-15650cae35bd",
+      "name": "Extract Design_ID",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ZVkYY5blo2ajMfxn",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const timeZone = 'America/New_York';\nconst today = new Date().toLocaleDateString('en-US', { \n  weekday: 'long', \n  timeZone \n});\n\nconst rows = $input.all();\n\nconst todayRows = rows.filter(item => {\n  const r = item.json;\n  const dayMatch = r['Day-week']?.trim().toLowerCase() === today.toLowerCase();\n  const status = (r.Status || '').trim().toLowerCase();\n  const isPending = status === 'pending' || status === '';\n  return dayMatch && isPending;\n});\n\nif (todayRows.length === 0) {\n  return []; \n}\n\nreturn todayRows;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10320,
+        4192
+      ],
+      "id": "e2178e39-6bb8-479b-9146-3fca79594354",
+      "name": "Pick By Date"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5e6dba79-d566-40b5-8161-00562e4b2b7e",
+              "leftValue": "={{ $json.Design_ID }}",
+              "rightValue": "=false",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        10528,
+        4192
+      ],
+      "id": "246de2f1-859f-4567-90b3-4289b1d5cf23",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/designs/{{ $json.Design_ID }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        10784,
+        4176
+      ],
+      "id": "a6d48fe1-4f01-487e-9093-f5c07bc9b718",
+      "name": "Get Canva Design Info",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/designs/{{ $json.design.id }}/pages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        11040,
+        4176
+      ],
+      "id": "5aa7038d-f6b8-438d-88be-9612b859abdf",
+      "name": "Get Canva Pages Info",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\nconst designInfo = $('Get Canva Design Info').item.json.design;\nconst pagesInfo = $('Get Canva Pages Info').item.json.items || [];\n\n// 1. CONTEO REAL DE PÁGINAS\nconst pageCount = pagesInfo.length || designInfo.page_count || 1;\n\n// 2. DIMENSIONES REALES (Usamos la primera página del diseño)\nconst firstPage = pagesInfo[0] || {};\nconst width = firstPage.dimensions?.width || designInfo.thumbnail?.width || 1080;\nconst height = firstPage.dimensions?.height || designInfo.thumbnail?.height || 1080;\nconst ratio = width / height;\n\n// 3. DETECCIÓN TÉCNICA DE VIDEO\nconst isAnimated = designInfo.is_animated === true;\nconst supportsVideo = designInfo.urls?.view_url?.includes('.mp4') ?? false;\nconst isVideo = isAnimated || supportsVideo;\n\nlet format = 'post';\nlet mediatype = 'image';\nlet canvaExportFormat = 'png';\nlet canvaQuality = 'horizontal_1080p';\n\n// LÓGICA DE CLASIFICACIÓN\nif (ratio < 0.75) { \n  // STORY (Vertical: 1080x1920 es 0.56)\n  format = 'stories';\n  canvaQuality = 'vertical_1080p';\n  if (isVideo || pageCount > 1) {\n    mediatype = 'video';\n    canvaExportFormat = 'mp4';\n  }\n} else if (pageCount > 1) {\n  // CAROUSEL (Cuadrado/4:5 + Multipágina)\n  format = 'carousel';\n  mediatype = 'image';\n  canvaExportFormat = 'png';\n} else {\n  // POST (Cuadrado/4:5 + 1 Página)\n  format = 'post';\n  if (isVideo) {\n    mediatype = 'video';\n    canvaExportFormat = 'mp4';\n  }\n}\n\nreturn {\n  json: {\n    format,\n    mediatype,\n    getlate_media_type: mediatype,\n    canvaExportFormat,\n    canvaQuality,\n    pages: pageCount,\n    title: designInfo.title,\n    debug: { isVideo, ratio, width, height, pageCount }\n  }\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        11264,
+        4176
+      ],
+      "id": "19f9fe7d-428b-4b5d-8378-119cbb1fa97b",
+      "name": "Detect Format"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "post",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "912387cd-9362-4299-a8d3-aa24453b0a9d"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "cae00f07-642c-40cd-bf9a-bc72b04c44c9",
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "=stories",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "7ba0e64c-3d4d-4c35-bda5-74834047edf9",
+                    "leftValue": "={{ $json.format }}",
+                    "rightValue": "carousel",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": "={{ false }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        11520,
+        4160
+      ],
+      "id": "74b0cabf-256e-4f5e-87af-559cae24b5a1",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "sendTo": "otunservices@gmail.com, Phoenixtec0@gmail.com",
+        "subject": "=📭 Sin publicaciones hoy — {{ $now.toFormat('EEEE dd/MM/yyyy') }}",
+        "message": "=Hola equipo Genius Astra 👋  No hay más publicaciones programadas para hoy ({{ $json.fecha }}).  ✅ Las publicaciones del día ya fueron procesadas o no había contenido asignado para este día.  📌 Recuerda revisar el Google Sheets para asignar nuevos diseños a los próximos días.  — Sistema de automatización Genius Astra 🤖",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        10768,
+        4384
+      ],
+      "id": "f9dfbf29-d9b7-4954-8061-8d96e60fa1fc",
+      "name": "Send a message",
+      "webhookId": "3e14f26c-3b70-4b3d-8d05-48218cd56adf",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rGsdLu9a3bbdpBQ9",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/designs/{{ $('Get Canva Design Info').item.json.design.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        12224,
+        4528
+      ],
+      "id": "ea22a537-099d-4973-8252-1139c26158d2",
+      "name": "Get Canva Design Template",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/designs/{{ $('Get Canva Design Info').item.json.design.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        12224,
+        4240
+      ],
+      "id": "6bcad41e-38b6-4387-86b1-cd67183ceab4",
+      "name": "Design Template Story",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "=POST",
+        "url": "https://api.canva.com/rest/v1/exports",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": {{ \n    $('Detect Format').item.json.getlate_media_type === 'video' \n    ? '{ \"type\": \"mp4\", \"quality\": \"horizontal_1080p\" }' \n    : '{ \"type\": \"png\" }' \n  }}\n}",
+        "options": {}
+      },
+      "name": "📤 Export POST",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        12512,
+        3984
+      ],
+      "id": "0eabeb80-9b81-4058-a581-748e950a5ca2",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.canva.com/rest/v1/exports",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": {{ \n    $('Detect Format').item.json.getlate_media_type === 'video' \n    ? '{ \"type\": \"mp4\", \"quality\": \"vertical_1080p\" }' \n    : '{ \"type\": \"png\" }' \n  }}\n}",
+        "options": {}
+      },
+      "name": "📤 Export HISTORIA",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        12512,
+        4240
+      ],
+      "id": "5377174a-88f4-4cc4-af59-fe751897f614",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.canva.com/rest/v1/exports",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "oAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"design_id\": \"{{ $('Pick By Date').item.json.Design_ID }}\",\n  \"format\": {{ \n    $('Detect Format').item.json.getlate_media_type === 'video' \n    ? '{ \"type\": \"mp4\", \"quality\": \"horizontal_1080p\" }' \n    : '{ \"type\": \"png\" }' \n  }}\n}",
+        "options": {}
+      },
+      "name": "📤 Export Carousel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        12528,
+        4528
+      ],
+      "id": "aea8d670-1538-4b3a-b0e8-1d9b53d000d6",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b79af122-fba3-48cf-9020-58c994f9df0e",
+              "name": "design_id",
+              "value": "={{ $('Pick By Date').item.json.Design_ID }}",
+              "type": "string"
+            },
+            {
+              "id": "50953655-0281-4452-bb33-73ca639a6067",
+              "name": "image_url",
+              "value": "={{ $('🔗 Get Export URL POST1').item.json.job.urls[0] }}\n",
+              "type": "string"
+            },
+            {
+              "id": "073c0c69-65e1-4f9a-a47a-6642a61e30d4",
+              "name": "description",
+              "value": "={{ $('Pick By Date').item.json.Description }}",
+              "type": "string"
+            },
+            {
+              "id": "ada78265-0cee-4c91-b93d-d96b25132bf7",
+              "name": "hashtags",
+              "value": "={{ $('Pick By Date').item.json.Hashtags }}",
+              "type": "string"
+            },
+            {
+              "id": "10b6ef0a-b917-424b-8c2d-0bd62ad47c6d",
+              "name": "format",
+              "value": "={{ $('Detect Format').item.json.format }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        13296,
+        3984
+      ],
+      "id": "75a73181-57a1-4b4a-aacf-b934a7bbd62f",
+      "name": "Set Post Data"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.canva.com/rest/v1/designs/{{ $('Get Canva Design Info').item.json.design.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        12208,
+        3984
+      ],
+      "id": "fcbff67b-e9f2-4c72-9c94-e26c191bd41d",
+      "name": "Get Canva Design Template1",
+      "credentials": {
+        "oAuth2Api": {
+          "id": "b3peiFzYIOLnL9te",
+          "name": "Genius Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\n\nconst cleanText = (text) => text?.replace(/\\\\\\\\n/g, ' ').replace(/\\\\n/g, ' ').trim() || '';\nconst cleanUrl = (url) => url?.replace(/\\\\\\\\n/g, '').replace(/\\\\n/g, '').trim() || '';\n\n// Función para asegurar que el sitio web tenga https://\nconst formatWebsite = (url) => {\n  if (!url) return '';\n  let clean = url.trim();\n  // Si empieza con www. o no tiene protocolo, añadir https://\n  if (!clean.startsWith('http://') && !clean.startsWith('https://')) {\n    return `https://${clean}`;\n  }\n  return clean;\n};\n\nreturn [{\n  json: {\n    Design_ID:   item.Design_ID   || '',\n    Description: cleanText(item.Description),\n    Hashtags:    item.Hashtags    || '',\n    image_url:   cleanUrl(item.image_url),\n    Image_url_2: cleanUrl(item.image_url_2),\n    image_url_3: cleanUrl(item.image_url_3),\n    image_url_4: cleanUrl(item.image_url_4),\n    image_url_5: cleanUrl(item.image_url_5),\n    image_url_6: cleanUrl(item.image_url_6),\n    image_url_7: cleanUrl(item.image_url_7),\n    format:      item.Format      || '',\n    Status:      item.Status      || '',\n    // Usamos Web_links que es el nombre que tienes en el workflow\n    Web_links:   formatWebsite(item.Web_links || item.Website) \n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        14032,
+        4288
+      ],
+      "id": "f08607e0-e738-4988-a5a0-22b94c40fa1b",
+      "name": "Clean Data"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://getlate.dev/api/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk_6ad5301178c80ae417ca7764dbf2c8ecc48a56ee7408a0b7e171969496c94cf2"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"content\": \"{{ $('Pick By Date').item.json.Description }}{{ $('Pick By Date').item.json.Hashtags }}\",\n  \"mediaItems\": [\n    { \"url\": \"{{ $('Clean Data').item.json.image_url }}\", \"type\": \"image\" },\n    { \"url\": \"{{ $('Clean Data').item.json.image_url_2 }}\", \"type\": \"image\" },\n    { \"url\": \"{{ $('Clean Data').item.json.image_url_3 }}\", \"type\": \"image\" },\n    { \"url\": \"{{ $('Clean Data').item.json.image_url_4 }}\", \"type\": \"image\" },\n    { \"url\": \"{{ $('Clean Data').item.json.image_url_5 }}\", \"type\": \"image\" },\n    { \"url\": \"{{ $('Clean Data').item.json.image_url_6 }}\", \"type\": \"image\" },\n    { \"url\": \"{{ $('Clean Data').item.json.image_url_7 }}\", \"type\": \"image\" }\n  ],\n  \"platforms\": [\n    {\n      \"platform\": \"instagram\",\n      \"accountId\": \"{{ $('ID Get Late Accounts').item.json.instagram }}\",\n      \"platformSpecificData\": {\n        \"contentType\": \"carousel\"\n      }\n    }\n  ],\n  \"publishNow\": true\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        14560,
+        4720
+      ],
+      "id": "4bef5154-a258-49c0-baff-b093b7e799a4",
+      "name": "📸 Carousel to Instagram (Getlate)"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n \"facebook\": \"697aafb377637c5c857cb630\",\n \"facebook_page_id\": \"61585073977460\",\n \"instagram\": \"69c342716cb7b8cf4c9861e8\",\n \"linkedin\": \"697ab30077637c5c857cb6a1\"\n}\n\n\n",
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        13840,
+        4176
+      ],
+      "id": "603ea21e-55a7-4b6a-8b32-7d8ad0446745",
+      "name": "ID Get Late Accounts"
     }
   ],
   "pinData": {},
   "connections": {
-    "Switch1": {
+    "📸 Stories to Instagram (Getlate)": {
       "main": [
         [
           {
-            "node": "📤 Export POST",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "📤 Export HISTORIA",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "📤 Export Carousel",
+            "node": "Set Gmail Data1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "ID Get Late Accounts": {
+    "📸 Post to Instagram (Getlate)1": {
       "main": [
         [
           {
-            "node": "Clean Data",
+            "node": "Set Gmail Data Post1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "📸 Stories to Instagram (Getlate)1": {
+    "📧 Gmail — Confirm Stories1": {
       "main": [
         [
           {
-            "node": "Set Gmail Data",
+            "node": "✅Mark as Published3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Detect Format": {
+    "📧 Gmail — Confim Post1": {
       "main": [
         [
           {
-            "node": "Switch1",
+            "node": "✅Mark as Published4",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "📸 Post to Instagram (Getlate)": {
+    "📧 Gmail — Confirm Carousel1": {
       "main": [
         [
           {
-            "node": "Set Gmail Data Post",
+            "node": "✅Mark as Published5",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "📸 Carousel to Instagram (Getlate)": {
+    "📘 Post to Facebook (Getlate)": {
       "main": [
         [
           {
-            "node": "Set Gmail Data Carousel",
+            "node": "Set Gmail Data Post1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "📧 Gmail — Confim Post": {
+    "Switch3": {
       "main": [
         [
           {
-            "node": "✅Mark as Published",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "📧 Gmail — Confirm Carousel": {
-      "main": [
-        [
-          {
-            "node": "✅Mark as Published2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "📧 Gmail — Confirm Stories": {
-      "main": [
-        [
-          {
-            "node": "✅Mark as Published1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "📘 Post to Facebook (Getlate)1": {
-      "main": [
-        [
-          {
-            "node": "Set Gmail Data Post",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch": {
-      "main": [
-        [
-          {
-            "node": "📸 Post to Instagram (Getlate)",
+            "node": "📸 Post to Instagram (Getlate)1",
             "type": "main",
             "index": 0
           },
           {
-            "node": "📘 Post to Facebook (Getlate)1",
+            "node": "📘 Post to Facebook (Getlate)",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "📸 Stories to Instagram (Getlate)1",
+            "node": "📸 Stories to Instagram (Getlate)",
             "type": "main",
             "index": 0
           }
@@ -2321,51 +2513,40 @@
         ]
       ]
     },
-    "Clean Data": {
+    "Set Gmail Data1": {
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "📧 Gmail — Confirm Stories1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Set Gmail Data": {
+    "Set Gmail Data Post1": {
       "main": [
         [
           {
-            "node": "📧 Gmail — Confirm Stories",
+            "node": "📧 Gmail — Confim Post1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Set Gmail Data Post": {
+    "Set Gmail Data Carousel1": {
       "main": [
         [
           {
-            "node": "📧 Gmail — Confim Post",
+            "node": "📧 Gmail — Confirm Carousel1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Set Gmail Data Carousel": {
-      "main": [
-        [
-          {
-            "node": "📧 Gmail — Confirm Carousel",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "⏰ Schedule Trigger": {
+    "⏰ Schedule Trigger3": {
       "main": [
         [
           {
@@ -2376,11 +2557,143 @@
         ]
       ]
     },
-    "Get Canva Design Info": {
+    "🔗 Get Export URL POST1": {
       "main": [
         [
           {
-            "node": "Get Canva Pages Info",
+            "node": "Set Post Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏳ Wait HISTORIA1": {
+      "main": [
+        [
+          {
+            "node": "🔗 Get Export URL HISTORIA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔗 Get Export URL HISTORIA1": {
+      "main": [
+        [
+          {
+            "node": "Set Post Data HISTORIA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏳ Wait Carousel1": {
+      "main": [
+        [
+          {
+            "node": "🔗 Get Export URL Carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏳ Wait POST1": {
+      "main": [
+        [
+          {
+            "node": "🔗 Get Export URL POST1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔗 Get Export URL Carousel1": {
+      "main": [
+        [
+          {
+            "node": "Set Post Data Carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Post Data Carousel1": {
+      "main": [
+        [
+          {
+            "node": "image_url carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Post Data HISTORIA1": {
+      "main": [
+        [
+          {
+            "node": "image url stories1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post image_url1": {
+      "main": [
+        [
+          {
+            "node": "ID Get Late Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "image url stories1": {
+      "main": [
+        [
+          {
+            "node": "ID Get Late Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "image_url carousel1": {
+      "main": [
+        [
+          {
+            "node": "ID Get Late Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏰ Schedule Trigger4": {
+      "main": [
+        [
+          {
+            "node": "Extract Design_ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏰ Schedule Trigger5": {
+      "main": [
+        [
+          {
+            "node": "Extract Design_ID",
             "type": "main",
             "index": 0
           }
@@ -2409,17 +2722,6 @@
         ]
       ]
     },
-    "🔗 Get Export URL POST": {
-      "main": [
-        [
-          {
-            "node": "Set Post Data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If": {
       "main": [
         [
@@ -2438,6 +2740,17 @@
         ]
       ]
     },
+    "Get Canva Design Info": {
+      "main": [
+        [
+          {
+            "node": "Get Canva Pages Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Get Canva Pages Info": {
       "main": [
         [
@@ -2449,55 +2762,58 @@
         ]
       ]
     },
-    "📤 Export HISTORIA": {
+    "Detect Format": {
       "main": [
         [
           {
-            "node": "⏳ Wait HISTORIA",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "⏳ Wait HISTORIA": {
+    "Switch": {
       "main": [
         [
           {
-            "node": "🔗 Get Export URL HISTORIA",
+            "node": "Get Canva Design Template1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Design Template Story",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Canva Design Template",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "🔗 Get Export URL HISTORIA": {
+    "Get Canva Design Template": {
       "main": [
         [
           {
-            "node": "Set Post Data HISTORIA",
+            "node": "📤 Export Carousel",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "⏳ Wait Carousel": {
+    "Design Template Story": {
       "main": [
         [
           {
-            "node": "🔗 Get Export URL Carousel",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "📤 Export Carousel": {
-      "main": [
-        [
-          {
-            "node": "⏳ Wait Carousel",
+            "node": "📤 Export HISTORIA",
             "type": "main",
             "index": 0
           }
@@ -2508,51 +2824,29 @@
       "main": [
         [
           {
-            "node": "⏳ Wait POST",
+            "node": "⏳ Wait POST1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "⏳ Wait POST": {
+    "📤 Export HISTORIA": {
       "main": [
         [
           {
-            "node": "🔗 Get Export URL POST",
+            "node": "⏳ Wait HISTORIA1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "🔗 Get Export URL Carousel": {
+    "📤 Export Carousel": {
       "main": [
         [
           {
-            "node": "Set Post Data Carousel",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Set Post Data Carousel": {
-      "main": [
-        [
-          {
-            "node": "image_url carousel",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Set Post Data HISTORIA": {
-      "main": [
-        [
-          {
-            "node": "image url stories",
+            "node": "⏳ Wait Carousel1",
             "type": "main",
             "index": 0
           }
@@ -2563,40 +2857,51 @@
       "main": [
         [
           {
-            "node": "Post image_url",
+            "node": "Post image_url1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Post image_url": {
+    "Get Canva Design Template1": {
       "main": [
         [
           {
-            "node": "ID Get Late Accounts",
+            "node": "📤 Export POST",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "image url stories": {
+    "Clean Data": {
       "main": [
         [
           {
-            "node": "ID Get Late Accounts",
+            "node": "Switch3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "image_url carousel": {
+    "📸 Carousel to Instagram (Getlate)": {
       "main": [
         [
           {
-            "node": "ID Get Late Accounts",
+            "node": "Set Gmail Data Carousel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ID Get Late Accounts": {
+      "main": [
+        [
+          {
+            "node": "Clean Data",
             "type": "main",
             "index": 0
           }
@@ -2604,7 +2909,7 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -2612,12 +2917,12 @@
     "timeSavedMode": "fixed",
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "49d28582-7357-46ee-b9e6-11f4a6a2083c",
+  "versionId": "065aaab7-d74f-4ac8-88f1-5ee0d81b2655",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "747783bda3f10a4d4023457d44f25ea0576e9cc9460c72700a587b2653a24d87"
   },
-  "id": "tkfCIYGtz6MSxIqj",
+  "id": "5rxcyH4pSQFAsobP",
   "tags": [
     {
       "updatedAt": "2026-01-26T01:49:01.316Z",
